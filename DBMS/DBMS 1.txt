@@ -1,0 +1,63 @@
+CREATE TABLE Employees(
+    emp_id NUMBER(5) PRIMARY KEY,
+    f_name VARCHAR2(20) NOT NULL,
+    l_name VARCHAR2(20) NOT NULL,
+    email VARCHAR2(50) UNIQUE,
+    hire_date DATE DEFAULT SYSDATE,
+    salary NUMBER(10,2) CHECK(salary>0)
+)
+
+desc Employees;
+
+Output:
+
+Column	Null?		Type
+EMP_ID	NOT NULL	NUMBER(5,0)
+F_NAME	NOT NULL	VARCHAR2(20)
+L_NAME	NOT NULL	VARCHAR2(20)
+EMAIL	 	- 		VARCHAR2(50)
+HIRE_DATE	- 		DATE
+SALARY	- 		NUMBER(10,2)
+
+
+INSERT INTO Employees(emp_id,f_name,l_name,email,hire_date,salary)
+VALUES(1,'Om','Shete','omshete1234@gmail.com','17-APR-2023',5000);
+INSERT INTO Employees(emp_id,f_name,l_name,email,hire_date,salary)
+VALUES(2,'Ramesh','Pawar','abc@gmail.com','23-MAR-2023',20000);
+INSERT INTO Employees(emp_id,f_name,l_name,email,hire_date,salary)
+VALUES(3,'Sanket','Bamane','Sanket@gmail.com','5-JUN-2022',2500);
+INSERT INTO Employees(emp_id,f_name,l_name,email,hire_date,salary)
+VALUES(4,'Sachin','Sharma','sachin@gmail.com','23-DEC-2022',15000);
+
+SELECT * 
+FROM Employees;
+
+EMP_ID	F_NAME	L_NAME	EMAIL	HIRE_			DATE		SALARY
+1		Om		Shete		omshete1234@gmail.com	17-APR-23	5000
+2		Ramesh	Pawar		abc@gmail.com		23-MAR-23	20000
+3		Sanket	Bamane	Sanket@gmail.com		05-JUN-22	2500
+4		Sachin	Sharma	sachin@gmail.com		23-DEC-22	15000
+
+
+DELETE 
+from Employees
+WHERE emp_id = 1;
+
+SELECT * 
+FROM Employees;
+
+EMP_ID	F_NAME	L_NAME	EMAIL	HIRE_			DATE		SALARY
+2		Ramesh	Pawar		abc@gmail.com		23-MAR-23	20000
+3		Sanket	Bamane	Sanket@gmail.com		05-JUN-22	2500
+4		Sachin	Sharma	sachin@gmail.com		23-DEC-22	15000
+
+UPDATE Employees
+SET salary = 55000
+WHERE f_name = 'Sachin';
+
+FROM Employees;
+
+EMP_ID	F_NAME	L_NAME	EMAIL	HIRE_			DATE		SALARY
+2		Ramesh	Pawar		abc@gmail.com		23-MAR-23	20000
+3		Sanket	Bamane	Sanket@gmail.com		05-JUN-22	2500
+4		Sachin	Sharma	sachin@gmail.com		23-DEC-22	55000
